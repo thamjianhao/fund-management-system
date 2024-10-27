@@ -5,6 +5,65 @@
 
 This API allows for the management of funds, including creating, retrieving, updating, and deleting fund records. The API follows RESTful principles and uses JSON for data interchange.
 
+To set up this Django project with a REST API for fund management, follow the steps below. This will include setting up the environment, installing dependencies, and running the server.
+
+
+## Setup Instructions
+
+### 1. Prerequisites
+
+Make sure you have the following installed:
+- **Python 3.8+**
+- **pip** (Python package manager)
+- **virtualenv** (recommended for creating isolated environments)
+- **MySQL** (or an alternative database, if not already available)
+
+
+### 2. Install Dependencies
+
+Use `pip` to install the project dependencies. 
+
+**Dependencies:**
+
+- **Django**: Web framework
+- **djangorestframework**: Django REST framework for building APIs
+- **mysqlclient** (or PyMySQL as an alternative): MySQL adapter (or another adapter if using a different database)
+
+
+### 3. Set Up the Database
+
+**Create a MySQL Database**:
+   Open MySQL and create a database for the project:
+   ```sql
+   CREATE DATABASE fund_db;
+   ```
+
+### 4. Run Migrations
+
+To create the necessary tables in the database, run:
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+### 5. Create a Superuser
+
+To access the Django admin interface, create a superuser:
+```bash
+python manage.py createsuperuser
+```
+Follow the prompts to create an admin user.
+
+### 6. Start the Development Server
+
+Run the Django development server:
+```bash
+python manage.py runserver
+```
+
+The API is now accessible at `http://127.0.0.1:8000/funds/` by default.
+
+
 ## Endpoints
 
 ### 1. List and Create Funds
@@ -190,3 +249,5 @@ VALUES ('FUND001', 'Test Fund', 'John Doe', 'A test fund for unit testing.', 100
 ```sql
 SELECT * FROM funds_fund WHERE fund_id = 'FUND001';
 ```
+
+
