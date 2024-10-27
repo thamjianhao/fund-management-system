@@ -4,8 +4,6 @@ from funds import views
 from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
-    path('admin/doc/', include('django.contrib.admindocs.urls')),
-
     # URL for Django admin interface
     path('admin/', admin.site.urls),
 
