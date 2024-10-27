@@ -1,4 +1,3 @@
-
 # API Documentation
 
 ## Overview
@@ -6,7 +5,6 @@
 This API allows for the management of funds, including creating, retrieving, updating, and deleting fund records. The API follows RESTful principles and uses JSON for data interchange.
 
 To set up this Django project with a REST API for fund management, follow the steps below. This will include setting up the environment, installing dependencies, and running the server.
-
 
 ## Setup Instructions
 
@@ -18,7 +16,6 @@ Make sure you have the following installed:
 - **virtualenv** (recommended for creating isolated environments)
 - **MySQL** (or an alternative database, if not already available)
 
-
 ### 2. Install Dependencies
 
 Use `pip` to install the project dependencies. 
@@ -28,7 +25,6 @@ Use `pip` to install the project dependencies.
 - **Django**: Web framework
 - **djangorestframework**: Django REST framework for building APIs
 - **mysqlclient** (or PyMySQL as an alternative): MySQL adapter (or another adapter if using a different database)
-
 
 ### 3. Set Up the Database
 
@@ -43,18 +39,44 @@ Use `pip` to install the project dependencies.
 To create the necessary tables in the database, run:
 ```bash
 python manage.py makemigrations
-python manage.py migrate
+python manage.py migrate --run-syncdb
 ```
 
-### 5. Create a Superuser
+The `--run-syncdb` flag ensures all tables are created even if some migrations do not use ORM models directly.
 
-To access the Django admin interface, create a superuser:
+### 5. Exclude ContentType Data
+
+Open the Django shell and run the following commands:
+
 ```bash
-python manage.py createsuperuser
+python manage.py shell
 ```
-Follow the prompts to create an admin user.
 
-### 6. Start the Development Server
+In the shell, run:
+
+```python
+from django.contrib.contenttypes.models import ContentType
+ContentType.objects.all().delete()
+```
+
+Then exit the shell with:
+
+```python
+quit()
+```
+
+### 6. Load Data from Fixture
+
+Load the JSON data dump (e.g., `datadump.json`) into the database with:
+
+```bash
+python manage.py loaddata datadump.json
+```
+
+This will populate the database with data specified in the fixture file.
+
+
+### 7. Start the Development Server
 
 Run the Django development server:
 ```bash
@@ -62,7 +84,6 @@ python manage.py runserver
 ```
 
 The API is now accessible at `http://127.0.0.1:8000/funds/` by default.
-
 
 ## Endpoints
 
@@ -249,5 +270,3 @@ VALUES ('FUND001', 'Test Fund', 'John Doe', 'A test fund for unit testing.', 100
 ```sql
 SELECT * FROM funds_fund WHERE fund_id = 'FUND001';
 ```
-
-
