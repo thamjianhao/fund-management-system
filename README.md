@@ -4,8 +4,6 @@
 
 This API allows for the management of funds, including creating, retrieving, updating, and deleting fund records. The API follows RESTful principles and uses JSON for data interchange.
 
-To set up this Django project with a REST API for fund management, follow the steps below. This will include setting up the environment, installing dependencies, and running the server.
-
 ## Setup Instructions
 
 ### 1. Prerequisites
