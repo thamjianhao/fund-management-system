@@ -73,7 +73,7 @@ WSGI_APPLICATION = 'funds.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djangodb',
+        'NAME': 'fund_db',
         'USER': 'root',
         'PASSWORD': 'pass',
         'HOST': 'localhost',
