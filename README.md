@@ -83,6 +83,15 @@ python manage.py runserver
 
 The API is now accessible at `http://127.0.0.1:8000/funds/` by default.
 
+### 8. Access the Admin Panel
+
+Once the server is running, go to the admin panel at `http://127.0.0.1:8000/admin/` and log in with:
+
+- **Username**: `user`
+- **Password**: `pass`
+
+This setup will give you direct access to manage your models and data through Django's admin interface with the specified credentials.
+
 ## Endpoints
 
 ### 1. List and Create Funds
